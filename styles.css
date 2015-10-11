@@ -1,0 +1,16 @@
+h1 {
+
+        color: purple;
+}
+
+ul {
+        list-style-type: none;
+        padding: 1;
+		display: block;
+		margin-left: 0;
+		margin-right: 80%;
+}
+
+li {
+		margin-bottom: 1em;
+}

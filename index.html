@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<!-- Author: Nirav Sheth
+        GMU - SWE632 - Term Project.
+-->
+<html lang="en">
+<head>
+        <meta charset="UTF-8" />
+        <meta name="description" content="Nirav Sheth SWE632 Project"/>
+        <meta name="keyword" content="Nirav, Sheth, SWE632, Project, GMU"/>
+        <meta name="robots" content="index,follow"/>
+        <link rel="stylesheet" type="text/css" href="styles.css" />
+        <script language="javascript" type="text/javascript" src="script.js"></script>    
+        <title>My To Do List</title>
+</head>
+
+<body onload="load()">
+        <div id="wrapper">
+        <noscript>Please Enable JavaScript</noscript>
+        <h1>A Simple To Do List</h1>
+        <hr>
+		<p>
+			<input type="text" id="newItem" placeholder="Enter items here..." />
+			<input type="button" id="addNewItem" value="Add" onclick="newItem()" />
+		</p>
+                        <ul id="todoList"></ul>
+                        <p><input type="button" value="Save" onclick="save()" />
+                   <input type="button" value="Clear" onclick="remove()" />
+                </p>
+        </div>
+</body>
+</html>
+
+
