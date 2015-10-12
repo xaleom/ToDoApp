@@ -18,13 +18,14 @@
         <h1>A Simple To Do List</h1>
         <hr>
 		<p>
-			<input type="text" id="newItem" placeholder="Enter items here..." />
-			<input type="button" id="addNewItem" value="Add" />
+			<input type="text" id="newItem" placeholder="Enter item here..." title="Enter task item here." />
+			<input type="button" id="addNewItem" title="Adds the item entered in the text box on the left to the List." value="Add" />
 		</p>
-                        <ul id="todoList"></ul>
-                        <p><input type="button" value="Save" onclick="save()" />
-                                <input type="button" value="Clear" onclick="remove()" />
-                        </p>
+            <ul id="todoList"></ul>
+        <hr>
+            <p><input type="button" value="Save" title="Saves the items on the list to the local storage." onclick="save()" />
+                <input type="button" value="Clear" title="Deletes all items from the list and removes it from local storage." onclick="remove()" />
+            </p>
         </div>
         <script language="javascript" type="text/javascript" src="script.js"></script>
 </body>

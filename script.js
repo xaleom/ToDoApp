@@ -9,13 +9,6 @@ function remove() {
 		localStorage.removeItem('list');
 }
 
-function load() {
-		var storedValue = localStorage.getItem('list');
-		if(storedValue) {
-				document.getElementById('todoList').innerHTML = storedValue;
-		}
-}
-
 function updateItemStatus() {
     var chkId = this.id.replace("chk_", "");
     var span = document.getElementById("itm_" + chkId);
@@ -26,16 +19,39 @@ function updateItemStatus() {
     }
 }
 
+function load() {
+    var storedValue = localStorage.getItem('list');
+    if(storedValue) {
+        document.getElementById('todoList').innerHTML = storedValue;
+    }
+
+    var chks = document.getElementsByClassName("cheks");
+    var dels = document.getElementsByClassName("delBtn");
+    var i;
+    for (i = 0; i < chks.length; i++) {
+        chks[i].onclick = updateItemStatus;
+        dels[i].onclick = delItem;
+    }
+}
+
 function delItem() {
     var btnId = this.id.replace("del_", "");
     var li = document.getElementById("li_" + btnId);
     var ul = li.parentElement;
     ul.removeChild(li);
-    localStorage.setItem('list', ul.innerHTML);
-    alert("Item deleted, List saved.");
 }
 
 function newItem(ul, itmText) {
+
+    var spans = document.getElementsByTagName("span");
+    var c;
+    for (c = 0; c < spans.length; c++) {
+        if (itmText.trim() == spans[c].innerText.trim()) {
+            alert("Item already exists.");
+            return;
+        }
+    }
+
 	if (itmText.trim() != "") {
         totalItems++;
 		var li = document.createElement("li");
@@ -44,13 +60,18 @@ function newItem(ul, itmText) {
         chk.type = "checkbox";
         chk.id = "chk_" + totalItems;
         chk.onclick = updateItemStatus;
+        chk.className = "cheks";
+        chk.title = "Check to mark item completed.";
+
         var span = document.createElement("span");
         span.id = "itm_" + totalItems;
         span.innerText = itmText;
 
         var del = document.createElement("button");
         del.id = "del_" + totalItems;
+        del.className ="delBtn";
         del.onclick = delItem;
+        del.title = "Delete the item from the list. Must click Save to update local storage.";
 
         var img = document.createElement("img");
         img.text = "Delete";
