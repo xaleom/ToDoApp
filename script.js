@@ -4,7 +4,7 @@ function save() {
 		alert("List Saved.");
 }
 
-function remove() {
+function removeAll() {
 		document.getElementById('todoList').innerHTML = "";
 		localStorage.removeItem('list');
 }
