@@ -1,4 +1,10 @@
 function save() {
+        var newi = document.getElementsByClassName("newiLbl");
+        var i;
+        for (i = 0; i < newi.length; i++) {
+            newi[i].innerText = '';
+            newi[i].title = "";
+        }
 		var listData = document.getElementById('todoList').innerHTML;
 		localStorage.setItem('list', listData);
 		alert("List Saved.");
@@ -9,6 +15,20 @@ function removeAll() {
 		localStorage.removeItem('list');
 }
 
+function removeSel() {
+    var chks = document.getElementsByClassName("cheks");
+    var i;
+    for (i = 0; i < chks.length; i++) {
+        if (chks[i].checked) {
+            var liId = chks[i].id.replace("chk_", "");
+            var li = document.getElementById("li_" + liId);
+            var ul = li.parentElement;
+            ul.removeChild(li);
+        }
+    }
+    save();
+}
+
 function updateItemStatus() {
     var chkId = this.id.replace("chk_", "");
     var span = document.getElementById("itm_" + chkId);
@@ -17,6 +37,27 @@ function updateItemStatus() {
     } else {
         span.className = "";
     }
+    var newi = document.getElementById("newi_" + chkId);
+    newi.innerText = '*';
+    newi.title = "Item unsaved.";
+
+}
+
+function rnmItem() {
+    var rnmId = this.id.replace("rnm_", "");
+    var span = document.getElementById("itm_" + rnmId);
+    var oldText = span.innerText;
+
+    var newText = prompt("Please enter new item text!");
+
+    if (newText == null || newText.trim() == "" || oldText.trim() == newText.trim()) {
+    } else {
+        span.innerText = newText;
+        var newi = document.getElementById("newi_" + rnmId);
+        newi.innerText = '*';
+        newi.title = "Item unsaved.";
+    }
+
 }
 
 function load() {
@@ -24,21 +65,16 @@ function load() {
     if(storedValue) {
         document.getElementById('todoList').innerHTML = storedValue;
     }
-
+    var newi = document.getElementsByClassName("newiLbl");
     var chks = document.getElementsByClassName("cheks");
-    var dels = document.getElementsByClassName("delBtn");
+    var rnm = document.getElementsByClassName("rnmBtn");
     var i;
     for (i = 0; i < chks.length; i++) {
         chks[i].onclick = updateItemStatus;
-        dels[i].onclick = delItem;
+        rnm[i].onclick = rnmItem;
+        newi[i].innerText = '';
+        newi[i].title = "";
     }
-}
-
-function delItem() {
-    var btnId = this.id.replace("del_", "");
-    var li = document.getElementById("li_" + btnId);
-    var ul = li.parentElement;
-    ul.removeChild(li);
 }
 
 function newItem(ul, itmText) {
@@ -67,20 +103,29 @@ function newItem(ul, itmText) {
         span.id = "itm_" + totalItems;
         span.innerText = itmText;
 
-        var del = document.createElement("button");
-        del.id = "del_" + totalItems;
-        del.className ="delBtn";
-        del.onclick = delItem;
-        del.title = "Delete the item from the list. Must click Save to update local storage.";
+        var rnm = document.createElement("button");
+        rnm.id = "rnm_" + totalItems;
+        rnm.className ="rnmBtn";
+        rnm.onclick = rnmItem;
+        rnm.title = "Rename the item.";
+
+        var newi = document.createElement("label");
+        newi.id = "newi_" + totalItems;
+        newi.className ="newiLbl";
+        newi.innerText = '*';
+        newi.title = "Item unsaved.";
 
         var img = document.createElement("img");
-        img.text = "Delete";
-        img.src = "delete.png";
-        del.appendChild(img);
+        img.text = "Rename";
+        img.src = "pen.png";
+        img.height="7";
+        img.width="7";
+        rnm.appendChild(img);
 
-        li.appendChild(del);
         li.appendChild(chk);
         li.appendChild(span);
+        li.appendChild(rnm);
+        li.appendChild(newi);
 		ul.appendChild(li);
 	} else { alert('Please provide item.');}
 }

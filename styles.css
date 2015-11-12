@@ -17,6 +17,12 @@ li {
 
 li span {
 	padding-left: 10px;
+    padding-right: 10px;
+}
+
+li label {
+    padding-left: 10px;
+    color: red;
 }
 
 .checked {

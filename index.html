@@ -22,8 +22,10 @@
 			<input type="button" id="addNewItem" title="Adds the item entered in the text box on the left to the List." value="Add" />
 		</p>
             <ul id="todoList"></ul>
+            <div><font color="red">*</font>  List item is unsaved.</div>
         <hr>
             <p><input type="button" value="Save" title="Saves the items on the list to the local storage." onclick="save()" />
+                <input type="button" value="Delete" title="Deletes the selected items from the list and removes them from local storage." onclick="removeSel()" />
                 <input type="button" value="Clear" title="Deletes all items from the list and removes it from local storage." onclick="removeAll()" />
             </p>
         </div>
