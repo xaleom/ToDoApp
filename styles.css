@@ -7,12 +7,10 @@ ul {
     padding: 1px;
     display: block;
     margin-left: 0;
-    width: 300px;
 }
 
 li {
     margin-bottom: 1em;
-    background: lightgrey;
     word-wrap: break-word;
 }
 
@@ -20,6 +18,9 @@ li span {
 
 	padding-left: 10px;
     padding-right: 10px;
+    background: lightgrey;
+    width: 212px;
+    display: inline-block;
     font-weight: bold;
 }
 

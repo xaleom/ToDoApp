@@ -121,8 +121,8 @@ function newItem(ul, itmText) {
         img.width="13";
         rnm.appendChild(img);
 
-        li.appendChild(chk);
         li.appendChild(rnm);
+        li.appendChild(chk);
         li.appendChild(span);
         li.appendChild(newi);
 		ul.appendChild(li);
