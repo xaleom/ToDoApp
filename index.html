@@ -13,17 +13,16 @@
 </head>
 
 <body onload="load()">
-        <div id="wrapper">
+        <div id="wrapper" align="CENTER">
         <noscript>Please Enable JavaScript</noscript>
         <h1>A Simple To Do List</h1>
-        <hr>
 		<p>
-			<input type="text" id="newItem" placeholder="Enter item here..." title="Enter task item here." />
+			<input type="text" id="newItem" style="border-style: solid; border-width: thin" placeholder="Enter item here..." title="Enter task item here." />
 			<input type="button" id="addNewItem" title="Adds the item entered in the text box on the left to the List." value="Add" />
 		</p>
+        <hr width="300px">
             <ul id="todoList"></ul>
-            <div><font color="red">*</font>  List item is unsaved.</div>
-        <hr>
+        <hr width="300px">
             <p><input type="button" value="Save" title="Saves the items on the list to the local storage." onclick="save()" />
                 <input type="button" value="Delete" title="Deletes the selected items from the list and removes them from local storage." onclick="removeSel()" />
                 <input type="button" value="Clear" title="Deletes all items from the list and removes it from local storage." onclick="removeAll()" />

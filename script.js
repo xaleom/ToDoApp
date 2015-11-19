@@ -40,7 +40,6 @@ function updateItemStatus() {
     var newi = document.getElementById("newi_" + chkId);
     newi.innerText = '*';
     newi.title = "Item unsaved.";
-
 }
 
 function rnmItem() {
@@ -118,13 +117,13 @@ function newItem(ul, itmText) {
         var img = document.createElement("img");
         img.text = "Rename";
         img.src = "pen.png";
-        img.height="7";
-        img.width="7";
+        img.height="13";
+        img.width="13";
         rnm.appendChild(img);
 
         li.appendChild(chk);
-        li.appendChild(span);
         li.appendChild(rnm);
+        li.appendChild(span);
         li.appendChild(newi);
 		ul.appendChild(li);
 	} else { alert('Please provide item.');}

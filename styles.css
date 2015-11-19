@@ -1,23 +1,26 @@
 h1 {
-        color: purple;
+        color: black;
 }
 
 ul {
-        list-style-type: none;
-        padding: 1px;
-		display: block;
-		margin-left: 0;
-		width: 250px;
+    list-style-type: none;
+    padding: 1px;
+    display: block;
+    margin-left: 0;
+    width: 300px;
 }
 
 li {
-		margin-bottom: 1em;
-		background: lightgrey;
+    margin-bottom: 1em;
+    background: lightgrey;
+    word-wrap: break-word;
 }
 
 li span {
+
 	padding-left: 10px;
     padding-right: 10px;
+    font-weight: bold;
 }
 
 li label {
@@ -30,5 +33,6 @@ li label {
     color: red;
     font-weight: bold;
 }
+
 
 
