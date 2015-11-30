@@ -2,11 +2,23 @@ h1 {
         color: black;
 }
 
+
+body {
+    background-color: khaki;
+}
+
+hr {
+    border-color: black;
+    width: 300px;
+    position: relative;
+    right: 800px
+}
 ul {
     list-style-type: none;
     padding: 1px;
     display: block;
     margin-left: 0;
+
 }
 
 li {
@@ -18,7 +30,10 @@ li span {
 
 	padding-left: 10px;
     padding-right: 10px;
-    background: lightgrey;
+    /*background: lightgrey;*/
+    border-bottom: solid;
+    border-bottom-width: thin;
+    border-bottom-color: black;
     width: 212px;
     display: inline-block;
     font-weight: bold;
