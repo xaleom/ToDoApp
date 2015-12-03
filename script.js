@@ -7,14 +7,16 @@ function save() {
         }
 		var listData = document.getElementById('todoList').innerHTML;
 		localStorage.setItem('list', listData);
-		alert("List Saved.");
 }
 
 function removeAll() {
-		document.getElementById('todoList').innerHTML = "";
-		localStorage.removeItem('list');
+    alertify.confirm("Are you sure you want to clear all items?", function (e) {
+        if (e) {
+            document.getElementById('todoList').innerHTML = "";
+            localStorage.removeItem('list');
+        }
+    });
 }
-
 function removeSel() {
     var chks = document.getElementsByClassName("cheks");
     var i;
@@ -47,16 +49,17 @@ function rnmItem() {
     var span = document.getElementById("itm_" + rnmId);
     var oldText = span.innerText;
 
-    var newText = prompt("Please enter new item text!");
-
-    if (newText == null || newText.trim() == "" || oldText.trim() == newText.trim()) {
-    } else {
-        span.innerText = newText;
-        var newi = document.getElementById("newi_" + rnmId);
-        newi.innerText = '*';
-        newi.title = "Item unsaved.";
-    }
-
+    alertify.prompt("Please enter new item text!", function (e, newText) {
+        if (e) {
+            if (newText == null || newText.trim() == "" || oldText.trim() == newText.trim()) {
+            } else {
+                span.innerText = newText;
+                var newi = document.getElementById("newi_" + rnmId);
+                newi.innerText = '*';
+                newi.title = "Item unsaved.";
+            }
+        }
+    }, oldText);
 }
 
 function load() {
@@ -82,7 +85,7 @@ function newItem(ul, itmText) {
     var c;
     for (c = 0; c < spans.length; c++) {
         if (itmText.trim() == spans[c].innerText.trim()) {
-            alert("Item already exists.");
+            alertify.alert("Item already exists.");
             return;
         }
     }
@@ -126,7 +129,7 @@ function newItem(ul, itmText) {
         li.appendChild(span);
         li.appendChild(newi);
 		ul.appendChild(li);
-	} else { alert('Please provide item.');}
+	} else { alertify.alert('Please provide item.');}
 }
 
 var totalItems = 0;
@@ -136,3 +139,4 @@ btnNewItem.onclick = function() {
     newItem(document.getElementById('todoList'), inp.value);
     inp.value = "";
 };
+

@@ -10,15 +10,15 @@ body {
 hr {
     border-color: black;
     width: 300px;
-    position: relative;
-    right: 800px
 }
 ul {
     list-style-type: none;
     padding: 1px;
     display: block;
     margin-left: 0;
-
+    width: 350px;
+    height: 200px;
+    overflow: auto;
 }
 
 li {
@@ -30,7 +30,6 @@ li span {
 
 	padding-left: 10px;
     padding-right: 10px;
-    /*background: lightgrey;*/
     border-bottom: solid;
     border-bottom-width: thin;
     border-bottom-color: black;
@@ -49,6 +48,15 @@ li label {
     color: red;
     font-weight: bold;
 }
+
+input[type="checkbox"]:hover {
+    opacity: 0.7;
+}
+
+
+
+
+
 
 
 
